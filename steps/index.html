@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/x-icon"
+    href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+  <link rel="mask-icon" type=""
+    href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg"
+    color="#111" />
+  <title>Coin Transfer Tutorial</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Titillium+Web:300,700,900");
+    @import url("https://fonts.googleapis.com/css?family=Palanquin:300");
+    @import url("https://afeld.github.io/emoji-css/emoji.css");
+    body {
+      height: 100vh;
+      width: 100%;
+      margin: 0;
+      font-family: 'Palanquin', sans-serif;
+      font-size: 21px;
+      color: #333;
+      line-height: 1.6;
+      background: hsl(228, 9%, 10%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 90%;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px -2px rgba(0, 0, 0, 0.35);
+      padding: 2em;
+      box-sizing: border-box;
+    }
+
+    .step {
+      display: none;
+      text-align: center;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    .progress-container {
+      background: rgba(37, 117, 252, 0.2);
+      height: 6px;
+      border-radius: 5px;
+      margin-top: 1em;
+      position: relative;
+    }
+
+    .step-progress {
+      background-color: #2575fc;
+      height: 100%;
+      border-radius: 5px;
+      width: 0;
+      transition: width 0.5s ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 700;
+      font-size: 3rem;
+      color: #00bfc2;
+      margin: 0 0 1em;
+    }
+
+    p {
+      margin-top: 0;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2em;
+    }
+
+    .button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button.next {
+      background-color: #2575fc;
+    }
+
+    .button.prev {
+      background-color: #00c4c7;
+    }
+
+    .button.copy {
+      background-color: #9a32c8;
+    }
+
+    .button.copy:hover {
+      background-color: #7b279e;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      body {
+        font-size: 18px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .button-container {
+        flex-direction: column;
+      }
+
+      .button {
+        margin-top: 1em;
+      }
+    }
+  </style>
+
+</head>
+
+<body translate="no">
+
+  <div class="container">
+    <div class="step active" data-step="1">
+      <h1>Step 1</h1>
+      <p>Open the "World App" on your device.</p>
+      <div class="button-container">
+        <button class="button next">Next step &rarr;</button>
+      </div>
+    </div>
+    <div class="step" data-step="2">
+      <h1>Step 2</h1>
+      <p>Login to your account and navigate to the "World Coin Crypto" section.</p>
+      <div class="button-container">
+        <button class="button prev">&larr; Previous step</button>
+        <button class="button next">Next step &rarr;</button>
+      </div>
+    </div>
+    <div class="step" data-step="3">
+      <h1>Step 3</h1>
+      <p>Select "Send" and enter the recipient's "World Web" wallet address and the amount of coins you want to transfer.</p>
+      <div class="button-container">
+        <input type="text" id="recipientAddress" placeholder="Enter recipient's wallet address" value="2f32a33f41777215429b85e1ba41084f" readonly>
+        <button class="button copy">Copy address</button>
+        <button class="button prev">&larr; Previous step</button>
+        <button class="button next">Next step &rarr;</button>
+      </div>
+    </div>
+    <div class="step" data-step="4">
+      <h1>Step 4</h1>
+      <p>Hold on the "Send" button to confirm the transaction.</p>
+      <div class="button-container">
+        <button class="button prev">&larr; Previous step</button>
+        <button class="button next">Next step &rarr;</button>
+      </div>
+    </div>
+    <div class="step" data-step="5">
+      <h1>Step 5</h1>
+      <p>Come back to the "World Web" and check your wallet. You will receive your Worldcoin + 50 WLD bonus.</p>
+      <div class="button-container">
+        <button class="button prev">&larr; Previous step</button>
+      </div>
+    </div>
+
+    <div class="progress-container">
+      <div class="step-progress"></div>
+    </div>
+
+  </div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+  <script>
+    $(document).ready(function() {
+      const steps = $(".step");
+      let currentStep = 1;
+
+      updateStepProgress();
+
+      $(".button.next").on("click", function() {
+        if (currentStep < steps.length) {
+          currentStep++;
+          updateStepProgress();
+        }
+      });
+
+      $(".button.prev").on("click", function() {
+        if (currentStep > 1) {
+          currentStep--;
+          updateStepProgress();
+        }
+      });
+
+      $(".button.copy").on("click", function() {
+        const addressInput = document.getElementById("recipientAddress");
+        addressInput.select();
+        document.execCommand("copy");
+        alert("Wallet address copied to clipboard!");
+      });
+
+      function updateStepProgress() {
+        steps.removeClass("active");
+        steps.filter(`[data-step="${currentStep}"]`).addClass("active");
+        $(".step-progress").css("width", ((currentStep - 1) / (steps.length - 1)) * 100 + "%");
+      }
+    });
+  </script>
+
+</body>
+
+</html>

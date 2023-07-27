@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+
+/* Variables */
+:root {
+  --primary-bg: #C7CDDB;
+  --secondary-bg: #BEBEC5;
+  --app-primary-bg: #383A48;
+  --box-shadow: rgba(0, 0, 0, 0.25);
+  --text: #CCDAE5;
+  --break-tiny: 300px;
+  --break-small: 500px;
+  --break-med: 600px;
+  --break-large: 1000px;
+}
+
+/* Reset */
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Styles */
+body {
+  background: var(--primary-bg);
+  background-size: cover;
+  font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Ubuntu", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+::selection {
+  color: white;
+  background: rgba(170, 170, 170, 0.6);
+}
+
+/* App Styles */
+#triangle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-bottom: 100vh solid var(--secondary-bg);
+  border-left: 100vw solid transparent;
+}
+
+#app {
+  color: var(--text);
+  background: var(--app-primary-bg);
+  position: relative;
+  border-radius: 15px;
+  z-index: 5;
+  width: 320px;
+  height: 490px;
+  overflow: hidden;
+  box-shadow: 0px 10px 29px 10px var(--box-shadow);
+}
+
+#title {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#title h4 {
+  margin: 15px 0 10px 15px;
+}
+
+#balance {
+  margin-left: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+#balance h3 {
+  margin: 0px 10px;
+}
+
+.clickable {
+  transition: 0.2s;
+}
+
+.clickable:active {
+  color: transparentize(var(--text), 0.15);
+  transform: scale(0.9);
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+#menu {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+}
+
+#menu i {
+  margin: 28px 0px 10px 20px;
+}
+
+#wallet-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: lighten(var(--app-primary-bg), 5%);
+}
+
+#coin-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.list-item {
+  background: var(--secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.list-item svg {
+  margin-right: 8px;
+}
+
+.coin-name {
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+}
+
+.selected-coin {
+  background: var(--app-primary-bg);
+  box-shadow: 0px 5px 20px 5px var(--box-shadow);
+  transform: translateY(-10px);
+}
+
+#eth-card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: var(--secondary-bg);
+  width: 100%;
+  height: 70%;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#eth-chart {
+  width: 90%;
+  height: 150px;
+  background: var(--app-primary-bg);
+  border-radius: 10px;
+  margin: 15px 0;
+  box-shadow: 0px 5px 15px 5px var(--box-shadow);
+}
+
+#eth-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
+}
+
+#eth-info h4 {
+  margin: 0;
+}
+
+#left {
+  display: flex;
+  flex-direction: column;
+}
+
+#right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.amount {
+  font-size: 28px;
+  margin: 0;
+  padding: 0;
+}
+
+.coin-value {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+#profit {
+  color: #39FF14;
+}
+
+.currency-name {
+  margin-left: 5px;
+}
+
+#transaction-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#transaction-icons i {
+  margin-left: 15px;
+}
+
+@media (max-width: var(--break-small)) {
+  #app {
+    width: 280px;
+    height: 500px;
+  }
+
+  #eth-card {
+    height: 60%;
+  }
+}
+
+@media (max-width: var(--break-tiny)) {
+  #app {
+    width: 240px;
+    height: 550px;
+  }
+
+  #eth-card {
+    height: 50%;
+  }
+}
+
+/* Utility Classes */
+.tertiary {
+  color: var(--secondary-bg);
+}
+
+.secondary {
+  color: var(--text);
+}

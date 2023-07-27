@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Wallet </title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="triangle"></div>
+  <div id="app">
+    <div id="title">
+      <h4 class="tertiary">Your Wallet</h4>
+      <div id="balance">
+        <i class="fab fa-wld clickable" title="BTC/USD"></i>
+        <h3 class="btc-heading" title="Wallet value">WLD0.000</h3>
+      </div>
+    </div>
+    <div id="menu">
+      <i class="fas fa-chart-line fa-2x secondary clickable" title="Wallet Value Chart"></i>
+      <i class="fas fa-user-circle fa-2x secondary clickable" title="Your Account"></i>
+    </div>
+    <div id="wallet-container">
+      <ul id="coin-list">
+        <li class="list-item">
+          <svg width="25" height="25" viewBox="-2 -2 40 40" xmlns="http://www.w3.org/2000/svg">
+            <!-- SVG content for Bitcoin -->
+          </svg>
+          <h5 class="coin-name">Bitcoin</h5>
+        </li>
+        <li class="list-item selected-coin">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 32 32">
+            <!-- SVG content for Ethereum -->
+          </svg>
+          <h5 class="coin-name">Worldcoin</h5>
+        </li>
+        <li class="list-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="-2 -2 40 40">
+            <!-- SVG content for Litecoin -->
+          </svg>
+          <h5 class="coin-name">World coin</h5>
+        </li>
+      </ul>
+    </div>
+    <div id="eth-card">
+      <div id="eth-chart" title="ETH/USD 7 day chart">
+        <!-- Add the chart content here -->
+      </div>
+      <div id="eth-info">
+        <div id="left">
+          <h4 class="tertiary">Total</h4>
+          <p class="amount">0.00<span class="secondary currency-name">ETH</span></p>
+          <p class="coin-value">0.00<span class="secondary currency-name">USD</span></p>
+          <p class="coin-value">0.00 <span class="secondary currency-name">BTC</span></p>
+        </div>
+        <div id="right">
+          <h4 class="tertiary">Profit/Loss</h4>
+          <p class="amount" id="profit">0.00 <span class="secondary currency-name">USD</span></p>
+          <div id="transaction-icons">
+            <i class="far fa-list-alt fa-2x secondary clickable" title="Transaction History"></i>
+            <i class="far fa-plus-square fa-2x secondary clickable" title="Add/Edit Transaction"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="path/to/your/javascript.js"></script>
+</body>
+</html>
